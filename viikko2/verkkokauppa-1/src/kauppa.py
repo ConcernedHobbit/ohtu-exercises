@@ -5,10 +5,10 @@ from viitegeneraattori import Viitegeneraattori
 
 
 class Kauppa:
-    def __init__(self):
-        self._varasto = Varasto.get_instance()
-        self._pankki = Pankki.get_instance()
-        self._viitegeneraattori = Viitegeneraattori.get_instance()
+    def __init__(self, varasto: Varasto, pankki: Pankki, viitegeneraattori: Viitegeneraattori):
+        self._varasto = varasto
+        self._pankki = pankki
+        self._viitegeneraattori = viitegeneraattori
         self._kaupan_tili = "33333-44455"
 
     def aloita_asiointi(self):
