@@ -1,0 +1,42 @@
+[[package]]
+name = "fuzzy-match"
+version = "0.0.1"
+description = "Fuzzy string matching in Python"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "strsim"
+version = "0.0.3"
+description = "A library implementing different string similarity and distance measures"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "toml"
+version = "0.10.2"
+description = "Python Library for Tom's Obvious, Minimal Language"
+category = "main"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.6"
+content-hash = "80f5f93ffbcb622fc038ce69a938c235e78744f517de7531783f288aeebd27a8"
+
+[metadata.files]
+fuzzy-match = [
+    {file = "fuzzy-match-0.0.1.tar.gz", hash = "sha256:be0c4568b555394947e1457cf21f9a965429f7d291f6990f1d4821de996bb6ae"},
+    {file = "fuzzy_match-0.0.1-py3-none-any.whl", hash = "sha256:b0cc8eede335bfd7ab18509da593fef5b5336e2eec0757f7bb886c828d1ff849"},
+]
+strsim = [
+    {file = "strsim-0.0.3-py3-none-any.whl", hash = "sha256:e5cf287392f906f0c6338dba8173ba9a05d8c3c173a74082c91220421d64d9fc"},
+    {file = "strsim-0.0.3.tar.gz", hash = "sha256:250cf1f698eceb00856cb368a417790d5f951bdc6329a799d89c6f6b85e41bcb"},
+]
+toml = [
+    {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
+    {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
+]
