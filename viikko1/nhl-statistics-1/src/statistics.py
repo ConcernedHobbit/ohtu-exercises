@@ -1,7 +1,8 @@
+from typing import List, Optional
 from player_reader import PlayerReader
+from player import Player
 
-
-def sort_by_points(player):
+def sort_by_points(player: Player):
     return player.points
 
 
@@ -11,14 +12,14 @@ class Statistics:
 
         self._players = self._reader.get_players()
 
-    def search(self, name):
+    def search(self, name: str) -> Optional[Player]:
         for player in self._players:
             if name in player.name:
                 return player
 
         return None
 
-    def team(self, team_name):
+    def team(self, team_name: str) -> List[Player]:
         players_of_team = filter(
             lambda player: player.team == team_name,
             self._players
@@ -26,7 +27,7 @@ class Statistics:
 
         return list(players_of_team)
 
-    def top_scorers(self, how_many):
+    def top_scorers(self, how_many: int) -> List[Player]:
         sorted_players = sorted(
             self._players,
             reverse=True,
