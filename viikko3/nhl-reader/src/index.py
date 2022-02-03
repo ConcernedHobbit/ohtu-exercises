@@ -18,7 +18,8 @@ def main():
         )
         players.append(player)
 
-    print(*players, sep='\n')
+    finnish_players = filter(lambda player: player.nationality == 'FIN', players)
+    print(*finnish_players, sep='\n')
 
 if __name__ == "__main__":
     main()

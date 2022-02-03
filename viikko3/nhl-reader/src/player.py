@@ -17,5 +17,9 @@ class Player:
         self.team = team
         self.games = games
     
+    @property
+    def points(self):
+        return self.goals + self.assists
+
     def __str__(self):
-        return f"[{self.team}] [{self.nationality}] {self.name}: {self.goals} goals, {self.assists} assists"
+        return f"{self.team}   {self.name:20}  {self.goals!s:>3} + {self.assists!s:>3} = {self.points!s:>3}"
