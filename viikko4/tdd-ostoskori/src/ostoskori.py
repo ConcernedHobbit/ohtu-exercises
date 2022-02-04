@@ -1,16 +1,17 @@
 from tuote import Tuote
 from ostos import Ostos
 
+
 class Ostoskori:
     def __init__(self):
         pass
         # ostoskori tallettaa Ostos-oliota, yhden per korissa oleva Tuote
 
     def tavaroita_korissa(self):
-        pass
+        return 0
         # kertoo korissa olevien tavaroiden lukumäärän
-        # eli jos koriin lisätty 2 kpl tuotetta "maito", tulee metodin palauttaa 2 
-        # samoin jos korissa on 1 kpl tuotetta "maito" ja 1 kpl tuotetta "juusto", tulee metodin palauttaa 2 
+        # eli jos koriin lisätty 2 kpl tuotetta "maito", tulee metodin palauttaa 2
+        # samoin jos korissa on 1 kpl tuotetta "maito" ja 1 kpl tuotetta "juusto", tulee metodin palauttaa 2
 
     def hinta(self):
         return 0
