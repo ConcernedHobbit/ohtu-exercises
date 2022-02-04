@@ -1,4 +1,4 @@
-# Glad, Sad Mad
+# Retrospektiivitekniikat
 
 Start, Stop, Continue, More of, Less of Wheel (myöhemmin "Wheel") sekä Glad, Sad, Mad (myöhemmin "GSM") ovat retrospektiivitekniikoita. Niiden tehtävänä on saada tiimi miettimään mikä kehitysprosessissa toimii ja mitä voisi parantaa.
 
