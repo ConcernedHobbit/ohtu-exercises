@@ -150,3 +150,24 @@ class TestKauppa(unittest.TestCase):
         self.kauppa.tilimaksu("dorian", "8456")
 
         self.assertEqual(self.viitegeneraattori_mock.uusi.call_count, 3)
+
+    def test_poista_korista_ei_veloita_tuotetta(self):
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.poista_korista(1)
+        self.kauppa.tilimaksu("karlos", "3423")
+
+        self.pankki_mock.tilisiirto.assert_called_with(
+            "karlos",
+            VIITE,
+            "3423",
+            ANY,
+            0
+        )
+
+    def test_poista_korista_palauttaa_varastoon(self):
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.poista_korista(1)
+
+        self.varasto_mock.palauta_varastoon.assert_called_once()
