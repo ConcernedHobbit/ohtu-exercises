@@ -118,3 +118,35 @@ class TestKauppa(unittest.TestCase):
             ANY,
             5
         )
+
+    def test_aloita_asiointi_nollaa_edelliset_ostokset(self):
+        # tehdään ensimmäiset ostokset
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.lisaa_koriin(2)
+
+        # aloitetaan uusi asiointi
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.tilimaksu("fabian", "5943")
+
+        # varmistetaan, että metodia tilisiirto on kutsuttu vain uuden asioinnin ostosten hinnalla
+        self.pankki_mock.tilisiirto.assert_called_with(
+            "fabian",
+            VIITE,
+            "5943",
+            ANY,
+            5
+        )
+
+    def test_tilimaksu_pyytaa_uuden_viitenumeron_joka_kerta(self):
+        self.kauppa.aloita_asiointi()
+        self.kauppa.tilimaksu("kaarle", "4354")
+
+        self.kauppa.aloita_asiointi()
+        self.kauppa.tilimaksu("fabian", "5943")
+
+        self.kauppa.aloita_asiointi()
+        self.kauppa.tilimaksu("dorian", "8456")
+
+        self.assertEqual(self.viitegeneraattori_mock.uusi.call_count, 3)
