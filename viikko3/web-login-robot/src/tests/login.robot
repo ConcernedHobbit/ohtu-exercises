@@ -34,14 +34,6 @@ Login Should Fail With Message
 Submit Credentials
     Click Button  Login
 
-Set Username
-    [Arguments]  ${username}
-    Input Text  username  ${username}
-
-Set Password
-    [Arguments]  ${password}
-    Input Password  password  ${password}
-
 Create User And Go To Login Page
     Create User  kalle  kalle123
     Go To Login Page
