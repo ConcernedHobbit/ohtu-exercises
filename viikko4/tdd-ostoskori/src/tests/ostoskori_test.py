@@ -96,3 +96,12 @@ class TestOstoskori(unittest.TestCase):
 
         self.assertEqual(ostos.tuotteen_nimi(), "Maito")
         self.assertEqual(ostos.lukumaara(), 1)
+
+    def test_ostos_poistuu_kun_viimeinen_tuote_poistetaan(self):
+        self.kori.lisaa_tuote(self.maito)
+        self.kori.poista_tuote(self.maito)
+
+        self.assertEqual(
+            len(self.kori.ostokset()),
+            0
+        )
