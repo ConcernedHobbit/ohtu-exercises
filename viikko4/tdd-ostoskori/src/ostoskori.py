@@ -7,6 +7,15 @@ class Ostoskori:
         self._ostokset = []
         # ostoskori tallettaa Ostos-oliota, yhden per korissa oleva Tuote
 
+    def _ostos_tuotteelle(self, tuote: Tuote):
+        return next(
+            filter(
+                lambda ostos: ostos.tuotteen_nimi() == tuote.nimi(),
+                self._ostokset
+            ),
+            None
+        )
+
     def tavaroita_korissa(self):
         return sum(
             map(
@@ -26,13 +35,7 @@ class Ostoskori:
 
     def lisaa_tuote(self, lisattava: Tuote):
         # lisää tuotteen
-        ostos = next(
-            filter(
-                lambda ostos: ostos.tuotteen_nimi() == lisattava.nimi(),
-                self._ostokset
-            ),
-            None
-        )
+        ostos = self._ostos_tuotteelle(lisattava)
 
         if ostos:
             ostos.muuta_lukumaaraa(1)
@@ -43,7 +46,8 @@ class Ostoskori:
 
     def poista_tuote(self, poistettava: Tuote):
         # poistaa tuotteen
-        pass
+        ostos = self._ostos_tuotteelle(poistettava)
+        ostos.muuta_lukumaaraa(-1)
 
     def tyhjenna(self):
         pass
