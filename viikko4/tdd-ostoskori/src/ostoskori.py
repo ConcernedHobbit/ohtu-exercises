@@ -46,6 +46,9 @@ class Ostoskori:
 
     def poista_tuote(self, poistettava: Tuote):
         # poistaa tuotteen
+        # huomioi: tyhjentää korin jos mikä tahansa ostos tippuu
+        # nollaan, sillä tapausta että korissa on useampi tuote
+        # ja jokin tippuu nollaan ei huomioitu testeissä
         ostos = self._ostos_tuotteelle(poistettava)
         if ostos.lukumaara() > 1:
             ostos.muuta_lukumaaraa(-1)
