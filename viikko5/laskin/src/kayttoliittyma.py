@@ -8,11 +8,38 @@ class Komento(Enum):
     NOLLAUS = 3
     KUMOA = 4
 
+class Suoritettava:
+    def __init__(self, funktio = None, syotefunktio = None):
+        self.funktio = funktio
+        self.syotefunktio = syotefunktio
+
+    def suorita(self):
+        if not self.funktio:
+            return False
+
+        if not self.syotefunktio:
+            self.funktio()
+            return True
+
+        syote = self.syotefunktio()
+
+        if not syote:
+            return False
+
+        self.funktio(syote)
+        return True
 
 class Kayttoliittyma:
     def __init__(self, sovellus, root):
         self._sovellus = sovellus
         self._root = root
+
+        self._komennot = {
+            Komento.SUMMA: Suoritettava(lambda n: sovellus.plus(n), self._lue_syote),
+            Komento.EROTUS: Suoritettava(lambda n: sovellus.miinus(n), self._lue_syote),
+            Komento.NOLLAUS: Suoritettava(sovellus.nollaa),
+            Komento.KUMOA: Suoritettava()
+        }
 
     def kaynnista(self):
         self._tulos_var = StringVar()
@@ -54,22 +81,18 @@ class Kayttoliittyma:
         self._nollaus_painike.grid(row=2, column=2)
         self._kumoa_painike.grid(row=2, column=3)
 
-    def _suorita_komento(self, komento):
-        arvo = 0
-
+    def _lue_syote(self):
         try:
             arvo = int(self._syote_kentta.get())
-        except Exception:
-            pass
+            return arvo
+        except:
+            return None
 
-        if komento == Komento.SUMMA:
-            self._sovellus.plus(arvo)
-        elif komento == Komento.EROTUS:
-            self._sovellus.miinus(arvo)
-        elif komento == Komento.NOLLAUS:
-            self._sovellus.nollaa()
-        elif komento == Komento.KUMOA:
-            pass
+    def _suorita_komento(self, komento):
+        suoritti = self._komennot[komento].suorita()
+
+        if not suoritti:
+            return
 
         self._kumoa_painike["state"] = constants.NORMAL
 
