@@ -50,11 +50,11 @@ class Ostoskori:
         if ostos.lukumaara() > 1:
             ostos.muuta_lukumaaraa(-1)
         else:
-            self._ostokset = []
+            self.tyhjenna()
 
     def tyhjenna(self):
-        pass
         # tyhjentää ostoskorin
+        self._ostokset.clear()
 
     def ostokset(self):
         return self._ostokset
