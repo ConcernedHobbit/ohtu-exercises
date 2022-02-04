@@ -38,7 +38,7 @@ class Kayttoliittyma:
             Komento.SUMMA: Suoritettava(lambda n: sovellus.plus(n), self._lue_syote),
             Komento.EROTUS: Suoritettava(lambda n: sovellus.miinus(n), self._lue_syote),
             Komento.NOLLAUS: Suoritettava(sovellus.nollaa),
-            Komento.KUMOA: Suoritettava()
+            Komento.KUMOA: Suoritettava(sovellus.kumoa)
         }
 
     def kaynnista(self):
@@ -94,7 +94,10 @@ class Kayttoliittyma:
         if not suoritti:
             return
 
-        self._kumoa_painike["state"] = constants.NORMAL
+        if self._sovellus.voi_kumota:
+            self._kumoa_painike["state"] = constants.NORMAL
+        else:
+            self._kumoa_painike["state"] = constants.DISABLED
 
         if self._sovellus.tulos == 0:
             self._nollaus_painike["state"] = constants.DISABLED

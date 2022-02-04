@@ -1,15 +1,30 @@
 class Sovelluslogiikka:
     def __init__(self, tulos=0):
-        self.tulos = tulos
+        self.tulokset = [tulos]
+
+    @property
+    def tulos(self):
+        return self.tulokset[len(self.tulokset) - 1]
+
+    @property
+    def askeleet(self):
+        return len(self.tulokset)
+
+    @property
+    def voi_kumota(self):
+        return self.askeleet > 1
+
+    def aseta_arvo(self, tulos):
+        self.tulokset.append(tulos)
 
     def miinus(self, arvo):
-        self.tulos = self.tulos - arvo
+        self.aseta_arvo(self.tulos - arvo)
 
     def plus(self, arvo):
-        self.tulos = self.tulos + arvo
+        self.aseta_arvo(self.tulos + arvo)
 
     def nollaa(self):
-        self.tulos = 0
+        self.aseta_arvo(0)
 
-    def aseta_arvo(self, arvo):
-        self.tulos = arvo
+    def kumoa(self):
+        self.tulokset.pop()
