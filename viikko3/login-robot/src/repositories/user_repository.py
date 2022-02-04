@@ -1,5 +1,5 @@
-import re
 from entities.user import User
+
 
 class UserRepository:
     def __init__(self):
@@ -28,21 +28,6 @@ class UserRepository:
         if existing_user:
             raise Exception(
                 f"User with username {user.username} already exists"
-            )
-
-        if len(user.username) < 3:
-            raise Exception(
-                f"Username {user.username} is too short"
-            )
-
-        if len(user.password) < 8:
-            raise Exception(
-                f"Password is too short"
-            )
-
-        if re.match("^[a-z]+$", user.password):
-            raise Exception(
-                f"Password is not complex enough"
             )
 
         users.append(user)
