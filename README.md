@@ -9,3 +9,4 @@
 - [Viikko 5 | Week 5](https://github.com/ConcernedHobbit/ohtu-exercises/tree/main/viikko5)
   - [Retrospektiivitiivistelmä | Retrospective summary](retro.md)
 - [Viikko 6 | Week 6](https://github.com/ConcernedHobbit/ohtu-exercises/tree/main/viikko6)
+  - [Pull request](https://github.com/Jokauppi/ohtu-lukuvinkkikirjasto/pull/3) | [PULL.md](PULL.md)
