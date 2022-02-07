@@ -11,6 +11,7 @@ class KPS:
         while self._onko_ok_siirto(ekan_siirto) and self._onko_ok_siirto(tokan_siirto):
             tuomari.kirjaa_siirto(ekan_siirto, tokan_siirto)
             print(tuomari)
+            print()
 
             ekan_siirto = self._ensimmaisen_siirto()
             tokan_siirto = self._toisen_siirto(ekan_siirto)
@@ -26,3 +27,5 @@ class KPS:
 
     def _onko_ok_siirto(self, siirto):
         return siirto == "k" or siirto == "p" or siirto == "s"
+
+    
